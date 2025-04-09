@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de sélection</title>
+    <script>
+        function handleFormSubmission(event) {
+            event.preventDefault(); // Empêche l'envoi du formulaire
+
+            const userChoice = document.querySelector('input[name="travel"]:checked').value;
+           
+            if (userChoice === 'Conducteur') {
+                window.location.href = 'conducteur.html'; // Redirige vers une autre page de voyage
+            } else if (userChoice === 'Passager') {
+                window.location.href = 'réservation.html'; // Redirige vers une page de vacances
+            } else {
+                alert('Veuillez choisir une option.');
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1>Faite votre choix</h1>
+    <form id="choiceForm" onsubmit="handleFormSubmission(event)">
+        <p>Quel type de voyage souhaitez-vous ?</p>
+
+        <label>
+            <input type="radio" name="travel" value="Conducteur" required> Conducteur
+        </label><br>
+        <label>
+            <input type="radio" name="travel" value="Passager" required> Passager
+        </label><br><br>
+
+        <button type="submit">confirmer</button>
+    </form>
+
+</body>
+</html>
+
+
+

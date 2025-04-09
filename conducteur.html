@@ -1,0 +1,103 @@
+	
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+
+<body>
+
+<div id="form">
+
+{{ error }}
+
+<!-- method = get post -->
+
+<form action="traiter_les_donnees_envoyees.php" method="post">
+
+
+<h2>Planifiez un voyage</h2>
+
+<label for="lc">départ </label><input type="text" name="hc" id="lc"><br>
+
+arrivé <input type="text" name="hn"><br>
+
+date <input
+type="date"
+id="start"
+name="trip-start"
+value=""
+min="2025-01-01"
+max="2030-12-31" />
+
+heure <label for="appt"></label>
+
+<input type="time" id="appt" name="appt" min="09:00" max="18:00" required />
+
+<br>
+
+<fieldset style="border-width: 2px 0 0">
+
+<legend>Est-ce que vous avez une préférence ?</legend>
+
+<input type="radio" name="r" id="ja" value="yes">
+
+<label for="ja">Homme</label>
+
+<input type="radio" name="r" id="nee" value="no" checked>
+
+<label for="nee">Femme</label>
+
+</fieldset>
+
+<label>
+
+<input type="radio" name="r2" value="maybe">peu importe
+
+</label>
+
+<br>
+
+</form>
+<a href="choix.html"><button>Retour</button></a>
+</div>
+
+<script>
+
+const { createApp } = Vue
+
+createApp({
+
+data() {
+
+return {
+
+error: ''
+
+}
+
+},
+
+async mounted() {
+
+let paramsString = new URL(window.location.href).searchParams;
+
+let searchParams = new URLSearchParams(paramsString);
+
+this.error = searchParams.has("msg") ? searchParams.get("msg") : '';
+
+}
+
+}).mount('#form')
+
+</script>
+
+</body>
+
+</html>
