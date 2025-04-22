@@ -1,0 +1,15 @@
+.btn-size-medium{
+    min-height: 80px;
+    max-height: 180px;
+    min-width: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container-center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}

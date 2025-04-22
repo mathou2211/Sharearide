@@ -1,0 +1,110 @@
+	
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+<link rel="stylesheet" href="css\stylesheet.css">
+</head>
+
+<body>
+
+<div id="form">
+
+{{ error }}
+
+<!-- method = get post -->
+
+    <form action="traiter_les_donnees_envoyees.php" method="post">
+
+    <div class="container-center">
+        <div class="border border-secondary rounded" style="padding: 20px 30px;">
+
+        <h2 class="text-center text-primary mb-4">Inscription</h2>
+        
+        <div class="form-group">
+            <label for="lc">Nom</label>
+            <input class="form-control" type="text" name="hc" id="lc"><br>
+
+            <label for="forename">Prénom</label>
+            <input class="form-control" type="text" name="hn" id="forename"><br>
+
+            <label for="start">Date d'expiration du permis de conduire</label>
+            <input class="form-control w-50"
+            type="date"
+            id="start"
+            name="trip-start"
+            value=""
+            min="2025-01-01"
+            max="2035-12-31"/>
+
+            <label class="mt-3" for="appt">Heure</label>
+            <input class="form-control w-50" type="time" id="appt" name="appt" min="09:00" max="18:00" required />
+
+        </div>
+
+        <fieldset class="border-top border-bottom border-secondary mt-3" style="padding: 10px;">
+
+        <legend class="text-center text-primary">Vous êtes?</legend>
+        <div class="d-flex flex-column m-3">
+
+            <input class="btn-check" type="radio" name="r" id="ja" value="yes" checked>
+            <label class="btn btn-outline-primary" for="ja">Homme</label>
+
+            <input class="btn-check" type="radio" name="r" id="nee" value="no">
+            <label class="btn btn-outline-primary" for="nee">Femme</label>
+
+            <input class="btn-check" id="other" type="radio" name="r" value="maybe">
+            <label class="btn btn-outline-primary" for="other">Autre</label>
+
+        </div>
+
+        </fieldset>
+
+        <div class="d-flex flex-row" style="margin: 15% 0 5% 0;">
+            <a href="choix.html" class="btn btn-outline-primary w-75">S'inscrire</a>
+            <a href="pagedaccueil.html" class="btn btn-outline-secondary">Annuler</a>
+        </div>
+
+        </div>
+    </div>
+    </form>
+</div>
+
+<script>
+
+const { createApp } = Vue
+
+createApp({
+
+data() {
+
+return {
+
+error: ''
+
+}
+
+},
+
+async mounted() {
+
+let paramsString = new URL(window.location.href).searchParams;
+
+let searchParams = new URLSearchParams(paramsString);
+
+this.error = searchParams.has("msg") ? searchParams.get("msg") : '';
+
+}
+
+}).mount('#form')
+
+</script>
+</body>
+
+</html>
