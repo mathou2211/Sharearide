@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Se connecter</title>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="css\stylesheet.css">
+  </head>
+  <body>
+    <div class="container-center">
+      <div class="border border-secondary rounded" style="padding: 20px;" id="app">
+      <h1 class="text-primary">Se connecter</h1>
+
+      <div class="d-flex flex-column mt-4">
+          <label for="lc">Adresse e-mail</label>
+          <div>
+              <input class="w-100 form-control border-secondary" type="text" placeholder="ton-super-mail@you.com" name="hc" id="lc">
+              <p class="form-text d-inline-flex">Gmail, Outlook, Yahoo...</p>
+          </div>
+          <p style="margin: 0;">Mot de passe</p>
+          <div>
+              <input class="w-100 form-control border-secondary" type="text" name="hn"><br>
+          </div>
+      </div>
+
+      <label for="appt"></label>
+      <div class="d-flex justify-content-center m-3">
+          <a href="choix.html" class="btn btn-outline-primary w-75 mf-2">Se connecter</a>
+          <a href="pagedaccueil.html" class="btn btn-outline-secondary w-50 mr-2">Annuler</a>
+      </div>
+      <div class="d-flex flex-column justify-content-center">
+          <a href="formulaireinscription.html" class="btn btn-outline-info w-100">Créer un compte</a>
+          <p class="form-text">Vous n'avez pas de compte ? Créer en un</p>
+      </div>
+
+  </div>
+  <a href="pagedaccueil.html" class="btn btn-secondary position-fixed top-0 start-0 m-3 z-3">
+    ⬅ Accueil
+</a>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
+
