@@ -48,16 +48,16 @@ fetch(`https://nominatim.openstreetmap.org/reverse?lat=${latChoosed}&lon=${lngCh
     );
 });
 
-const inputStart = document.getElementById('lc');
+const inputStart = document.getElementById('lc'); // Quand on commence à écrire dans la barre d'arrive ça suggère des adresses
 const suggestionsStart = document.getElementById('suggestionsStart');
 
 const inputEnd = document.getElementById('arrive');
 const suggestionsEnd = document.getElementById('suggestionsEnd');
 
-let debounceTimer; // Timer pour évite de spam l'api (la carte)
+let debounceTimer; // Timer pour évite de spam l'api (la carte), ça évite de suggérer des adresses constamment 
 
 $(document).keyup(function(event) { // Si on appuie sur entrer ça prend la permière suggestion qui apparait et ça simule un click dessus
-    if ($("#lc").is(":focus") && event.key == "Enter") {
+    if ($("#lc").is(":focus") && event.key == "Enter") { // clé qui enclenche l'événement "enter"
         var first_li = $('ul#suggestionsStart li:first');
         if(first_li){
             first_li.trigger("click");
@@ -83,7 +83,7 @@ function findAndValidateSuggestion(inp, sug, markerType, word) // Prend un input
     clearTimeout(debounceTimer);
     const query = inp.value.trim();
 
-    if (query.length < 2) { // Si ta suggestion fait pas assez de caractères elle ne suggère rien 
+    if (query.length < 2) { // Si ta suggestion fait pas assez de caractères elle ne suggère rien, toujours dans la recherche
       sug.innerHTML = '';
       return;
     }
@@ -167,12 +167,12 @@ document.addEventListener('click', (e) => {
   });
 
 function modifyStart() { // Click souris sur la carte, afin de remplir le départ 
-  if (routingControl) {
-    map.removeControl(routingControl);
+  if (routingControl) { // Si trajet déjà présent 
+    map.removeControl(routingControl); // Le retire
   }
-  const lat = parseFloat(latChoosed);
-  const lng = parseFloat(lngChoosed);
-  map.setView([lat, lng], 13);
+  const lat = parseFloat(latChoosed); // Fixe la latitude
+  const lng = parseFloat(lngChoosed); // Fixe la longitude
+  map.setView([lat, lng], 13); // zoom sur la carte 
   
   var info = `${cityFound}, ${countryFound}`.trim();
   inputStart.value = info;
@@ -182,7 +182,7 @@ function modifyStart() { // Click souris sur la carte, afin de remplir le dépar
     markerStart.remove();
   }
 
-  markerStart = L.marker([lat, lng]).addTo(map)
+  markerStart = L.marker([lat, lng]).addTo(map) // Fixe le marqueur de départ sur la carte en fonction de la longitude et de la latitude
   .bindTooltip(`Départ : ${info}`, { permanent: true, direction: 'top' })
   .openTooltip();
 
@@ -191,7 +191,7 @@ function modifyStart() { // Click souris sur la carte, afin de remplir le dépar
   goTo();
 }
 
-function modifyEnd() { // Click souris sur la carte, afin de remplir l'arrivé
+function modifyEnd() { // Click souris sur la carte, afin de remplir l'arrivé, même système que pour le départ
   if (routingControl) {
     map.removeControl(routingControl);
   }
@@ -222,7 +222,7 @@ function goTo(){ // Tracer le trajet sur la carte
     return
   }
 
-  if (routingControl) { // Si il y les 2 points les remplaces 
+  if (routingControl) { // Si il y les 2 points les remplaces
     map.removeControl(routingControl);
   }
 
@@ -236,7 +236,7 @@ function goTo(){ // Tracer le trajet sur la carte
     addWaypoints: false,
     createMarker: function() { return null; }, // Ne recrée pas les marqueurs
     lineOptions: {
-      styles: [{ color: 'blue', opacity: 0.7, weight: 5 }]
+      styles: [{ color: 'blue', opacity: 0.7, weight: 5 }] // Style du tracé
     }
   }).addTo(map);
 }
