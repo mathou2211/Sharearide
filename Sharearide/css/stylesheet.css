@@ -1,0 +1,51 @@
+.btn-size-medium{
+    min-height: 80px;
+    max-height: 180px;
+    min-width: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container-center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.popup-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    background-color: #0d6efd; /* Couleur de fond bleue */
+    color: white; /* Texte en blanc */
+    border: 1px solid #0a58ca; /* Bordure légèrement plus foncée */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+}
+
+/* Afficher la pop-up si le checkbox est coché */
+#popup:checked + .popup-container {
+    display: block;
+}
+
+/* Bouton de fermeture */
+.btn-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+/* Cacher le checkbox */
+#popup {
+    display: none;
+}
