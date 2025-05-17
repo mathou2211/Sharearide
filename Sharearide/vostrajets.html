@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mes Trajets</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <a href="pagedaccueil.html" class="btn position-fixed top-0 start-0 m-3 z-3" 
+   style="background-color: #0d6efd; color: white; border: 2px solid #0d6efd">
+    Accueil
+        </a>
+
+    <div class="alert custom-alert d-flex justify-content-between align-items-center" role="alert">
+        <span class="alert-text">Trajet bien enregistré !</span>
+        <button type="button" class="btn-close white-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    
+      
+      <style>
+        .custom-alert {
+          background-color: #0d6efd !important;
+          color: white !important;
+          border: none;
+          border-radius: 10px;
+          padding: 0.75rem 1rem;
+      
+          max-width: 270px;      /* largeur limitée */
+          width: 100%;
+          margin-left: auto;     /* collée à gauche avec un petit espace */
+            margin-right: 20px;    /* évite le centrage */
+          margin-top: 20px;      /* un peu d’espace en haut */
+        }
+      
+        .alert-text {
+          text-decoration: underline;
+          color: white !important;
+        }
+      
+        .white-close {
+          filter: invert(1);
+        }
+      </style>
+
+    <h2 class="text-center mb-4">Mes Trajets</h2>
+
+    <!-- Tableau des trajets -->
+    <table class="table-custom">
+        <thead>
+          <tr>
+            <th>Prénom</th>
+            <th>Téléphone</th>
+            <th>Heure</th>
+            <th>Départ</th>
+            <th>Arrivé</th>
+            <th>Sexe</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ trajet.prenom }}</td>
+            <td>{{ trajet.telephone }}</td>
+            <td>{{ trajet.heure }}</td>
+            <td>{{ trajet.départ }}</td>
+            <td>{{ trajet.arrivé }}</td>
+            <td>{{ trajet.sexe }}</td>
+          </tr>
+          <!-- autres lignes -->
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+
+   </tbody>
+      </table>
+      
+      <style>
+        .table-custom th {
+          background-color: #0d6efd;
+          color: white;
+          padding: 10px;
+          text-align: left;
+        }
+      
+        .table-custom td {
+          padding: 10px;
+        }
+      
+        .table-custom {
+          border-collapse: collapse;
+          width: 100%;
+        }
+      
+        .table-custom th,
+        .table-custom td {
+          border: 1px solid #dee2e6;
+        }
+      </style>
+
+
+<script>
+const { createApp } = Vue;
+
+createApp({
+    data() {
+        return {
+            showPopup: false,
+            trajets: [
+                {
+                    id: 1,
+                    nom: "Dupont",
+                    prenom: "Jean",
+                    email: "jean.dupont@example.com",
+                    telephone: "0612345678",
+                    sexe: "Homme"
+                },
+                {
+                    id: 2,
+                    nom: "Martin",
+                    prenom: "Claire",
+                    email: "claire.martin@example.com",
+                    telephone: "0698765432",
+                    sexe: "Femme"
+                }
+                // Tu peux ajouter plus de trajets ici ou les charger via une API ou un fichier JSON
+            ]
+        };
+    },
+     })
+    mounted() {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get("success") === "true")}
+
+            
+</script>
